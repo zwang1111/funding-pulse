@@ -1,0 +1,15 @@
+# Railway: https://railway.app — New Project → Deploy from GitHub / CLI
+#   railway login
+#   railway init
+#   railway variables set ADDRESS=0xYourEvmPayTo NETWORK=base DEFAULT_PRICE=0.01 PORT=8787
+#   railway up
+# Then attach a public domain in the Railway dashboard (HTTPS).
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"

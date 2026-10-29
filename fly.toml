@@ -1,0 +1,39 @@
+# fly.io deploy: https://fly.io/docs/apps/launch/
+#   fly auth login
+#   fly apps create perps-funding-pulse   # pick a unique name
+#   fly secrets set ADDRESS=0xYourEvmPayTo NETWORK=base DEFAULT_PRICE=0.01
+#   fly deploy
+#
+# Public URL: https://<app-name>.fly.dev
+
+app = "perps-funding-pulse"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8787"
+  # Do not put ADDRESS here — use `fly secrets set`
+  NETWORK = "base"
+  DEFAULT_PRICE = "0.01"
+  FACILITATOR_URL = "https://facilitator.daydreams.systems"
+
+[http_service]
+  internal_port = 8787
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "15s"
+    method = "GET"
+    path = "/health"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1

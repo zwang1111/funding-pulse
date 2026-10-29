@@ -1,0 +1,20 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Connect this repo, set secret ADDRESS in the dashboard, deploy.
+services:
+  - type: web
+    name: perps-funding-pulse
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8787"
+      - key: NETWORK
+        value: base
+      - key: DEFAULT_PRICE
+        value: "0.01"
+      - key: FACILITATOR_URL
+        value: https://facilitator.daydreams.systems
+      - key: ADDRESS
+        sync: false
