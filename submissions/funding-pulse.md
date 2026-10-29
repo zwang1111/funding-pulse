@@ -10,13 +10,13 @@
 
 | Endpoint | Method | Payment |
 |---|---|---|
-| `TODO(public-https-url)/health` | GET | free |
-| `TODO(public-https-url)/.well-known/agent.json` | GET | free |
-| `TODO(public-https-url)/v1/funding?venues=hyperliquid&markets=BTC` | GET | free probe |
-| `TODO(public-https-url)/v1/x402-status` | GET | free |
-| `TODO(public-https-url)/entrypoints/funding-pulse/invoke` | POST | **x402** (unpaid → HTTP 402) |
+| `https://funding-pulse.onrender.com/health` | GET | free |
+| `https://funding-pulse.onrender.com/.well-known/agent.json` | GET | free |
+| `https://funding-pulse.onrender.com/v1/funding?venues=hyperliquid&markets=BTC` | GET | free probe |
+| `https://funding-pulse.onrender.com/v1/x402-status` | GET | free |
+| `https://funding-pulse.onrender.com/entrypoints/funding-pulse/invoke` | POST | **x402** (unpaid → HTTP 402) |
 
-Replace `TODO(public-https-url)` after Fly/Railway/Render deploy (see `DEPLOY.md`).
+Public deploy: Render Live (see STATUS.md). Fly/Railway optional backups in DEPLOY.md.
 
 ### How to verify x402 (local facts — same routes after deploy)
 
@@ -46,7 +46,7 @@ curl -s http://127.0.0.1:8787/.well-known/agent.json | head
 # Stub-only 402: X402_STUB=1 + ADDRESS; bypass header X-PAYMENT-BYPASS: 1
 ```
 
-After public deploy, repeat the same curls against `TODO(public-https-url)`.
+After public deploy, repeat the same curls against `https://funding-pulse.onrender.com`.
 
 ## Agent description
 
@@ -65,8 +65,8 @@ Note: some egress IPs get Binance **403**; adapters soft-fail per row. Hyperliqu
 - [x] Returns `funding_rate`, `time_to_next`, `open_interest`, `skew` for requested `venue_ids` + `markets[]` (local verified)
 - [x] Near real-time (HTTP fetch on each invoke; no multi-hour cache)
 - [ ] Live UI tolerance check from clean IP vs venue screens
-- [ ] **TODO:** Deployed on a **stable public domain** (not only a tunnel) — fill URL above
-- [x] x402 path implemented (unpaid → 402 locally with `ADDRESS` set); **TODO:** re-verify on public URL
+- [x] Deployed on stable public domain: https://funding-pulse.onrender.com (Render Live 2026-10-29)
+- [x] x402 path implemented; **re-verified on public URL** 2026-10-29 22:15 CST (unpaid POST → HTTP 402, base-sepolia)
 - [x] `GET /.well-known/agent.json` discoverable
 - [ ] **TODO:** PR into `daydreamsai/agent-bounties` under `submissions/` linking **#8** (user/zwang1111; do not invent claim)
 - [ ] **TODO(solana-receive-address):** Solana wallet for payout — **user-provided only; never invent**
