@@ -69,12 +69,12 @@ Note: some egress IPs get Binance **403**; adapters soft-fail per row. Hyperliqu
 - [x] x402 path implemented; **re-verified on public URL** 2026-10-29 22:15 CST (unpaid POST → HTTP 402, base-sepolia)
 - [x] `GET /.well-known/agent.json` discoverable
 - [ ] **TODO:** PR into `daydreamsai/agent-bounties` under `submissions/` linking **#8** (user/zwang1111; do not invent claim)
-- [ ] **TODO(solana-receive-address):** Solana wallet for payout — **user-provided only; never invent**
+- [x] Solana receive address provided by user 2026-10-29
 
 ## Solana wallet address for payment
 
 ```
-TODO(solana-receive-address)
+Bva5dSHMcg4sf7LntZyF8SeJqniZNDsystem9gcjcBZnyeP
 ```
 
 ## Additional resources

@@ -24,17 +24,16 @@
 - Deploy-ready Docker / Fly / Railway / Render configs
 - Public repo zwang1111/funding-pulse
 - **Public HTTPS Live on Render + unpaid 402 re-verified**
-- Draft `submissions/funding-pulse.md` (public URL filled; Solana still TODO)
+- Draft `submissions/funding-pulse.md` (public URL + Solana address filled)
 
-## Not done (FCFS claim blockers — user only)
+## Not done (FCFS claim blockers)
 
-1. **PR** into `daydreamsai/agent-bounties` `submissions/` linking **#8** (**user / zwang1111 only**; bot does not open that PR)
-2. **Real Solana receive address** from user (never invent)
-3. Optional: add `funding-pulse` to fine-grained PAT Contents for local push; venue UI tolerance from clean IP
+1. **PR** into `daydreamsai/agent-bounties` `submissions/` linking **#8** (**zwang1111**)
+2. Optional: add `funding-pulse` to fine-grained PAT Contents for local push; venue UI tolerance from clean IP
 
 ## Competitors
 
-Open PRs already on #8 (e.g. #380, #379, #375). FCFS on complete qualifying submission — move fast once Solana + PR are ready.
+Open PRs already on #8 (e.g. #380, #379, #375). FCFS — Solana filled; open the submissions PR ASAP.
 
 ## Quick verify (public)
 
@@ -44,3 +43,8 @@ curl -si -X POST https://funding-pulse.onrender.com/entrypoints/funding-pulse/in
   -H 'content-type: application/json' -d '{}' | head -30
 # Expect HTTP 402 + accepts[]
 ```
+
+## Solana payout (2026-10-29 ~22:31 Asia/Shanghai)
+- User confirmed receive address (verbatim): `Bva5dSHMcg4sf7LntZyF8SeJqniZNDsystem9gcjcBZnyeP`
+- Note: local base58 decode is 35 bytes (Solana ed25519 pubkey normally 32); user insisted 100% this is their Sol network address — written as given.
+- Remaining: open PR to daydreamsai/agent-bounties submissions/ linking #8 (zwang1111).
